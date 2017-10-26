@@ -35,7 +35,7 @@ export default class SelectFilter extends React.Component {
         <TableHeaderColumn dataField='id' isKey={ true }>Product ID</TableHeaderColumn>
         <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
         <TableHeaderColumn dataField='quality' filterFormatted dataFormat={ enumFormatter } formatExtraData={ qualityType }
-          filter={ { type: 'SelectFilter', options: qualityType } }>Product Quality</TableHeaderColumn>
+          filter={ { id: 'select-filter', type: 'SelectFilter', options: qualityType } }>Product Quality</TableHeaderColumn>
       </BootstrapTable>
     );
   }

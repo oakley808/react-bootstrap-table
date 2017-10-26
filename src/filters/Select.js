@@ -94,12 +94,27 @@ class SelectFilter extends Component {
     const selectClass = classSet('filter', 'select-filter', 'form-control',
               { 'placeholder-selected': this.state.isPlaceholderSelected });
 
+    /* eslint-disable no-unused-vars */
+    const {
+      defaultValue,
+      filterHandler,
+      options,
+      placeholder,
+      columnName,
+      selectText,
+      style,
+      withoutEmptyOption,
+      ...rest
+    } = this.props;
+    /* eslint-enable */
+
     return (
       <select ref='selectInput'
-          style={ this.props.style }
+          { ...rest }
+          style={ style }
           className={ selectClass }
           onChange={ this.filter }
-          defaultValue={ (this.props.defaultValue !== undefined) ? this.props.defaultValue : '' } >
+          defaultValue={ (defaultValue !== undefined) ? defaultValue : '' } >
         { this.getOptions() }
       </select>
     );
@@ -107,11 +122,14 @@ class SelectFilter extends Component {
 }
 
 SelectFilter.propTypes = {
+  defaultValue: PropTypes.number,
   filterHandler: PropTypes.func.isRequired,
   options: PropTypes.object.isRequired,
   placeholder: PropTypes.string,
   columnName: PropTypes.any,
-  style: PropTypes.oneOfType([ PropTypes.object ])
+  selectText: PropTypes.string,
+  style: PropTypes.oneOfType([ PropTypes.object ]),
+  withoutEmptyOption: PropTypes.bool
 };
 
 export default SelectFilter;
